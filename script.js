@@ -19,11 +19,26 @@ console.log(axios)
 //})
 
 
-function getRandomEmails(n) {
+async function getRandomEmails(n) {
     const url = "https://flynn.boolean.careers/exercises/api/random/mail";
     const emails = [];
 
+    for (let i = 0; i < n; i++) {
+    try {
+    const response = await fetch(url);
+    if (response.ok) {
+    const data = await response.json();
+    emails.push(data.response);
+    } else {
+    console.log(`Errore ${response.status}`);
+            }
+        } catch (error) {
+            console.log(`Errore nella richiesta ${error}`);
+        }
+    }
+    return emails;
 }
+
 
 
 
