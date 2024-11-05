@@ -40,7 +40,10 @@ async function getRandomEmails(n) {
 }
 
 
-
+// Genera 10 email casuali
+getRandomEmails(10).then(emails => {
+    emails.forEach(email => console.log(email));
+});
 
 
 
